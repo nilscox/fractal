@@ -1,4 +1,4 @@
-Fracal
+Fractal
 ======
 
 Mandelbrot set generator.
