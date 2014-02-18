@@ -11,3 +11,4 @@ Usage:
 - ctrl: speed up everything
 - shift: speed down everything
 - R: reset
+- ctrl+S: save the current view to fractal.bmp
