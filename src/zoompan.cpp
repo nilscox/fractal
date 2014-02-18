@@ -23,7 +23,7 @@ double ZoomPan::updateZoom(const Event& evt, double speed)
       z = -1;
   }
 
-  return 1 + speed * (z*_zoomSpeed);
+  return 1 + speed * z * _zoomSpeed;
 }
 
 Vector2 ZoomPan::updatePan(const Event& evt, double speed)

@@ -7,15 +7,11 @@
 #include "zoompan.hpp"
 #include "event.hpp"
 
-class Mandelbrot : public Fractal, public ZoomPan
+class Mandelbrot : public Fractal
 {
 public:
   Mandelbrot(int w, int h);
   virtual ~Mandelbrot();
-
-  virtual double updateZoom(const Event& evt, double speed);
-  virtual Vector2 updatePan(const Event& evt, double speed);
-  virtual int updateIterations(const Event& evt, double speed);
 
   using Fractal::update;
   virtual void update(const Event& evt);

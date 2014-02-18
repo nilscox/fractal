@@ -1,7 +1,7 @@
 #include "mandelbrot.hpp"
 
 Mandelbrot::Mandelbrot(int w, int h)
-  : Fractal(w, h), ZoomPan(0.05, 5)
+  : Fractal(w, h)
 {
   setPosition(Vector2(-2.1, -1.2));
   setZoom(100);
@@ -22,8 +22,6 @@ Mandelbrot::~Mandelbrot()
 
 void Mandelbrot::update(const Event& evt)
 {
-  Fractal::update();
-
   bool shift = evt.key(SDLK_LSHIFT) || evt.key(SDLK_RSHIFT);
   bool ctrl = evt.key(SDLK_LCTRL) || evt.key(SDLK_RCTRL);
 
@@ -43,48 +41,7 @@ void Mandelbrot::update(const Event& evt)
   if (ctrl && evt.key(SDLK_s))
     saveToFile("fractal.bmp");
 
-  updateZoom(evt, speed);
-  updatePan(evt, speed);
-  updateIterations(evt, speed);
-}
-
-double Mandelbrot::updateZoom(const Event& evt, double speed)
-{
-  double z = ZoomPan::updateZoom(evt, speed);
-  if (z)
-  {
-    zoom(z, evt.mouse() / getZoom() + getPosition());
-    redrawNeeded();
-  }
-
-  return z;
-}
-
-Vector2 Mandelbrot::updatePan(const Event& evt, double speed)
-{
-  Vector2 pan = ZoomPan::updatePan(evt, speed/getZoom());
-  if (pan != Vector2::ZERO)
-  {
-    move(pan);
-    redrawNeeded();
-  }
-
-  return pan;
-}
-
-int Mandelbrot::updateIterations(const Event& evt, double speed)
-{
-  int i = 0;
-  if (evt.key(SDLK_KP_PLUS))
-    ++i;
-  if (evt.key(SDLK_KP_MINUS))
-    --i;
-
-  i *= speed;
-  if (i)
-    _maxIter += i;
-
-  return i;
+  Fractal::update(evt, speed);
 }
 
 void Mandelbrot::compute()
