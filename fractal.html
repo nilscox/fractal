@@ -1,39 +1,34 @@
 <html>
 <head>
     <title>Fractal</title>
+    <style>canvas {padding: 10px;}</style>
 </head>
 <body>
-    <canvas width="320" height="240"></canvas>
+  <canvas width="320" height="240" style="float: left;"></canvas>
 
-    <pre>
-x:      <span id="x"></span>
-y:      <span id="y"></span>
-scale:  <span id="scale"></span>
-iter:   <span id="iter"></span>
-time:   <span id="time"></span>
-    </pre>
+  <pre style="float: left;">
+view x:           <span id="mvx"></span>
+view y:           <span id="mvy"></span>
+view scale:       <span id="mvscale"></span>
+fractal iter:     <span id="mfiter"></span>
+generation time:  <span id="mgtime"></span>
+  </pre>
 
-    <script src="fractal.js"></script>
-    <script>
-        var canvas = document.getElementsByTagName('canvas')[0];
+  <div style="clear: left;"></div>
 
-        let fractal = new Mandelbrot(canvas.width, canvas.height);
-        let palette = fractal.getPalette();
+  <canvas width="320" height="240" style="float: left;"></canvas>
+  <pre style="float: left;">
+julia x:          <span id="jx"></span>
+julia y:          <span id="jy"></span>
+view x:           <span id="jvx"></span>
+view y:           <span id="jvy"></span>
+view scale:       <span id="jvscale"></span>
+fractal iter:     <span id="jfiter"></span>
+generation time:  <span id="jgtime"></span>
+  </pre>
 
-        palette.setColor(0.0, new Color(0.0, 0.0, 0.0));
-        palette.setColor(0.2, new Color(0.9, 0.5, 0.2));
-        palette.setColor(0.4, new Color(0.2, 0.3, 0.9));
-        palette.setColor(0.6, new Color(0.8, 0.2, 0.1));
-        palette.setColor(0.8, new Color(0.9, 0.1, 0.6));
-        palette.setColor(1.0, new Color(1.0, 1.0, 1.0));
+  <div style="clear: left;"></div>
 
-        setup(fractal, new View(canvas, -0.5, 0, 100), info => {
-            document.getElementById('x').innerText = info.x;
-            document.getElementById('y').innerText = info.y;
-            document.getElementById('scale').innerText = info.scale;
-            document.getElementById('iter').innerText = info.iter;
-            document.getElementById('time').innerText = info.time + ' ms';
-        });
-    </script>
+  <script src="main.js"></script>
 </body>
 </html>

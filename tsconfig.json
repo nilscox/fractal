@@ -1,5 +1,20 @@
 {
   "compilerOptions": {
-    "sourceMap":  true
-  }
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true
+  },
+  "files": [
+    "src/Color.ts",
+    "src/Fractal.ts",
+    "src/Julia.ts",
+    "src/Mandelbrot.ts",
+    "src/Palette.ts",
+    "src/View.ts",
+    "src/utils.ts",
+    "src/setup.ts",
+    "main.ts"
+  ]
 }
